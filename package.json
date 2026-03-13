@@ -1,0 +1,12 @@
+{
+  "name": "mnist-jax-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "setup": "make setup",
+    "train": "make train",
+    "dev": "pnpm --filter web dev",
+    "cli": "pnpm --filter cli start",
+    "install:all": "pnpm install"
+  }
+}

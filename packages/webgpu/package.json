@@ -1,0 +1,16 @@
+{
+  "name": "@mnist-jax/webgpu",
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "tsc --watch --noEmit"
+  },
+  "dependencies": {
+    "@mnist-jax/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@webgpu/types": "^0.1.44",
+    "typescript": "^5.0.0"
+  }
+}

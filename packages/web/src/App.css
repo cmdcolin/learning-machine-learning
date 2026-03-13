@@ -1,0 +1,486 @@
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+
+.mode-selector {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #1e1e1e;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 1px solid #333;
+}
+
+.mode-selector .active {
+  color: #646cff;
+  font-weight: bold;
+}
+
+.not-supported {
+  font-size: 0.7rem;
+  color: #f44336;
+  font-style: italic;
+}
+
+/* Switch styling */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #333;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #646cff;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #646cff;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 24px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+section {
+  padding: 20px;
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  min-width: 350px;
+}
+
+.debug-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+  padding: 10px;
+  background: #252525;
+  border-radius: 8px;
+}
+
+.debug-canvas {
+  border: 1px solid #444;
+  image-rendering: pixelated;
+  width: 56px;
+  height: 56px;
+}
+
+.prediction-display {
+  font-size: 1.5rem;
+}
+
+.winner {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #646cff;
+  margin-left: 10px;
+}
+
+.prob-chart {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.prob-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.digit-label {
+  width: 15px;
+  font-weight: bold;
+}
+
+.prob-bar-container {
+  flex-grow: 1;
+  height: 12px;
+  background-color: #333;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.prob-bar {
+  height: 100%;
+  background-color: #444;
+  transition: width 0.2s ease-out;
+}
+
+.winner-bar {
+  background-color: #646cff;
+}
+
+.prob-value {
+  width: 45px;
+  font-size: 0.8rem;
+  text-align: right;
+}
+
+.test-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 10px;
+}
+
+.test-item {
+  padding: 8px;
+  background-color: #252525;
+  border-radius: 8px;
+}
+
+.test-label {
+  font-size: 0.7rem;
+  color: #888;
+}
+
+.test-pred {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.correct { color: #4CAF50; }
+.wrong { color: #f44336; }
+
+button {
+  background-color: #2a2a2a;
+  color: white;
+  border: 1px solid #444;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+button:hover {
+  border-color: #646cff;
+  background-color: #333;
+}
+
+/* ── Tab navigation ─────────────────────────────────────────────────────── */
+
+.tab-nav {
+  display: flex;
+  gap: 4px;
+  background: #151515;
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid #2a2a2a;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  color: #888;
+  padding: 6px 18px;
+  border-radius: 7px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.tab-btn:hover {
+  color: #ccc;
+  background: #1e1e1e;
+  border-color: transparent;
+}
+
+.tab-active {
+  background: #1e1e1e !important;
+  color: #646cff !important;
+  border: 1px solid #333 !important;
+}
+
+/* ── TrainView layout ───────────────────────────────────────────────────── */
+
+.train-view {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.train-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.train-subtitle {
+  font-size: 0.8rem;
+  color: #666;
+  margin: 4px 0 0;
+}
+
+.train-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-primary {
+  background-color: #646cff !important;
+  border-color: #646cff !important;
+  color: white;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background-color: #7c82ff !important;
+}
+
+/* ── Progress bar ───────────────────────────────────────────────────────── */
+
+.progress-bar-track {
+  width: 100%;
+  height: 4px;
+  background: #2a2a2a;
+  border-radius: 2px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #646cff, #a78bfa);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* ── Two-column layout ──────────────────────────────────────────────────── */
+
+.train-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 700px) {
+  .train-body { grid-template-columns: 1fr; }
+}
+
+/* ── Metric cards ───────────────────────────────────────────────────────── */
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.metric-card {
+  background: #1a1a2e;
+  border: 1px solid #2a2a4a;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.metric-label {
+  font-size: 0.7rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.metric-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #e0e0ff;
+  font-family: monospace;
+  margin-top: 2px;
+}
+
+/* ── Phase explanation card ─────────────────────────────────────────────── */
+
+.phase-card {
+  background: #111827;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+}
+
+.phase-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #c4b5fd;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.phase-detail {
+  font-size: 0.78rem;
+  color: #9ca3af;
+  line-height: 1.5;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #646cff;
+  animation: pulse 1s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* ── Epoch history table ─────────────────────────────────────────────────── */
+
+.epoch-table-wrap {
+  max-height: 180px;
+  overflow-y: auto;
+  border: 1px solid #2a2a4a;
+  border-radius: 8px;
+}
+
+.epoch-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  font-family: monospace;
+}
+
+.epoch-table th {
+  background: #1a1a2e;
+  color: #888;
+  padding: 6px 10px;
+  text-align: left;
+  font-weight: 400;
+  position: sticky;
+  top: 0;
+}
+
+.epoch-table td {
+  padding: 4px 10px;
+  color: #ccc;
+  border-top: 1px solid #1e1e30;
+}
+
+.epoch-table tr:last-child td {
+  color: #e0e0ff;
+  font-weight: 600;
+}
+
+/* ── Architecture box ───────────────────────────────────────────────────── */
+
+.arch-box {
+  margin-top: 16px;
+  background: #111827;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.arch-title {
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+
+.arch-layers {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.arch-layer {
+  text-align: center;
+  background: #1a1a2e;
+  border: 1px solid #2a2a4a;
+  border-radius: 6px;
+  padding: 8px 10px;
+  flex: 1;
+}
+
+.arch-layer-name {
+  font-size: 0.65rem;
+  color: #6b7280;
+  text-transform: uppercase;
+}
+
+.arch-layer-size {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #646cff;
+  font-family: monospace;
+}
+
+.arch-layer-desc {
+  font-size: 0.65rem;
+  color: #9ca3af;
+}
+
+.arch-arrow {
+  color: #4b5563;
+  font-size: 1.2rem;
+}
+
+.arch-params {
+  font-size: 0.7rem;
+  color: #4b5563;
+  font-family: monospace;
+}
+
+.train-metrics { display: flex; flex-direction: column; }
+.train-chart-col { display: flex; flex-direction: column; }
